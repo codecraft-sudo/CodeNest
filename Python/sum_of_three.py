@@ -1,1 +1,0 @@
-print("The sum of three number is : ",5+7+2)
