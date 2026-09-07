@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar</title>
+
+    <link rel="stylesheet"
+          href="https://pyscript.net/releases/2024.1.1/core.css">
+
+    <script type="module"
+            src="https://pyscript.net/releases/2024.1.1/core.js">
+    </script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+            width: 100px;
+        }
+
+        button {
+            padding: 7px 15px;
+            background-color: lightblue;
+            border: 1px solid blue;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: skyblue;
+        }
+
+        pre {
+            margin-top: 20px;
+            font-size: 16px;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Calendar</h1>
+
+    <label for="year">Enter Year:</label>
+    <input type="number" id="year" value="2026">
+
+    <br><br>
+
+    <label for="month">Enter Month:</label>
+    <input type="number" id="month" min="1" max="12" value="9">
+
+    <br><br>
+
+    <button py-click="show_calendar">Show Calendar</button>
+
+    <pre id="output"></pre>
+
+
+    <script type="py">
+import calendar
+from pyscript import document
+
+def show_calendar(event):
+    year = int(document.querySelector("#year").value)
+    month = int(document.querySelector("#month").value)
+
+    if month < 1 or month > 12:
+        document.querySelector("#output").innerText = "Please enter a month between 1 and 12."
+    else:
+        result = calendar.month(year, month)
+        document.querySelector("#output").innerText = result
+    </script>
+
+</body>
+</html>
