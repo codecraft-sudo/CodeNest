@@ -12,4 +12,5 @@ print("Original Database")
 print(df)
 
 df_clean=df.dropna()
-print("Cleaned data:\n",df_clean)
+print("Cleaned data:\n",df_clean) 
+                                                                                    
