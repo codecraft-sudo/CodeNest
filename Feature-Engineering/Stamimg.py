@@ -2,6 +2,7 @@
 import pandas as pd
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
+from sklearn.feature_extraction.text import CountVectorizer 
 import nltk
 
 # Download necessary tokenizer
@@ -36,9 +37,9 @@ df['stemmed_Text'] = df['Text'].apply(stem_text)
 print("\nAfter stemming:")
 print(df[['Text', 'stemmed_Text']])
 #initializes count vectorize
-vectorizer=Countvectorizer()
+vectorizer=CountVectorizer()
 #fit and transform text data 
-x=vectorizer.fit_transform(df['Text'])
+x = vectorizer.fit_transform(df['stemmed_Text'])
 #convert to dataFrame
 bow_df=pd.DataFrame(x.toarray(),columns=vectorizer.get_feature_names_out())
 print("\nbag of words representatijn")
