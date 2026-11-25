@@ -3,7 +3,7 @@
 from PIL import Image
 
 #open the image
-image=Image.open("D:\\tour.jpg")
+image=Image.open("E:\picturee.jpg")
 
 rotate=image.rotate(-45)
 rotate.save("ratate.jpg")

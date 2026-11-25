@@ -1,7 +1,7 @@
 from PIL import Image
 
 #open the image
-image=Image.open("D:\\tour.jpg")
+image=Image.open("E:\picture.jpg")
 
 #Horizontal Flip
 hoz_flip=image.transpose(Image.FLIP_LEFT_RIGHT)
