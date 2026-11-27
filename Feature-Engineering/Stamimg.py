@@ -1,46 +1,32 @@
-
+# Stemming 
 import pandas as pd
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize
-from sklearn.feature_extraction.text import CountVectorizer 
 import nltk
 
-# Download necessary tokenizer
-nltk.download('punkt_tab')
+# Download necessary tokenizer data
+nltk.download('punkt')
 
 # Sample database
 df = pd.DataFrame({
-    'Text': [
-        'cats are running quickly.',
-        'Dogs were barking loudly.',
-        'He studies in university.',
-        'They are enjoying the holiday.',
+    'text': [
+        'cats are running quickly',
+        'dogs were barking loudly',
+        'he studies in university',
+        'they are enjoying the holiday',
         'ran fast'
     ]
 })
-
-print("Original dataframe:")
+print("Original DataFrame:")
 print(df)
-
 # Initialize stemmer
 stemmer = PorterStemmer()
-
 # Function to stem text
 def stem_text(text):
     tokens = word_tokenize(text.lower())
     stem = [stemmer.stem(word) for word in tokens if word.isalpha()]
     return " ".join(stem)
-
 # Apply stemming
-df['stemmed_Text'] = df['Text'].apply(stem_text)
-
+df['stemmed_text'] = df['text'].apply(stem_text)
 print("\nAfter stemming:")
-print(df[['Text', 'stemmed_Text']])
-#initializes count vectorize
-vectorizer=CountVectorizer()
-#fit and transform text data 
-x = vectorizer.fit_transform(df['stemmed_Text'])
-#convert to dataFrame
-bow_df=pd.DataFrame(x.toarray(),columns=vectorizer.get_feature_names_out())
-print("\nbag of words representatijn")
-print(bow_df)
+print(df[['text', 'stemmed_text']])
